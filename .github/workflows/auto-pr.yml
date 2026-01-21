@@ -3,9 +3,8 @@ name: Auto PR on Push
 on:
   push:
     branches:
-        - 'dev'
-    #   - 'feature/**'    # Matches feature/* branches
-    #   - 'bugfix/**'     # Matches bugfix/* branches
+        - 'feature/**'    # Matches feature/* branches
+        - 'bugfix/**'     # Matches bugfix/* branches
       # Add more branch patterns as needed
 
 jobs:
@@ -33,7 +32,7 @@ jobs:
             Branch: ${{ github.ref_name }}
             Triggered by: ${{ github.actor }}
           branch: ${{ github.ref_name }}
-          base: latest
+          base: dev
           labels: |
             automated-pr
             needs-review
