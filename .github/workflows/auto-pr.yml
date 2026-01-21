@@ -1,39 +1,43 @@
-name: Auto PR on Push
+name: Auto PR from dev to latest
 
 on:
   push:
     branches:
-        - 'feature/**'    # Matches feature/* branches
-        - 'bugfix/**'     # Matches bugfix/* branches
-      # Add more branch patterns as needed
+      - dev
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   create-pull-request:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-    
+
     steps:
-      - name: Checkout repository
+      - name: Checkout repository (FULL history)
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Required for proper branch comparison
+          fetch-depth: 0
+          ref: dev
+
+      - name: Fetch all branches explicitly
+        run: |
+          git fetch origin dev latest --prune
+
+      - name: Debug branch diff (proof)
+        run: |
+          echo "Commits dev not in latest:"
+          git log --oneline origin/latest..origin/dev
+          echo "File diff:"
+          git diff --stat origin/latest..origin/dev
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          rebase-strategy: none
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Auto-created PR from ${{ github.ref_name }}"
-          title: "Auto PR: ${{ github.ref_name }}"
+          branch: auto/dev-to-latest
+          base: latest
+          title: "Auto PR: dev → latest"
           body: |
-            Automated pull request created from push to ${{ github.ref_name }}
-            
-            Branch: ${{ github.ref_name }}
-            Triggered by: ${{ github.actor }}
-          branch: ${{ github.ref_name }}
-          base: dev
-          labels: |
-            automated-pr
-            needs-review
+            Auto-generated PR from dev to latest
+          delete-branch: true
