@@ -1,38 +1,49 @@
-name: Auto PR on Push
+name: Continuous Pull To Development
 
 on:
   push:
     branches:
-      - 'feature/**'    # Matches feature/* branches
-      - 'bugfix/**'     # Matches bugfix/* branches
-      # Add more branch patterns as needed
+      - 'feature/**'
+      - 'bugfix/**'
+
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
-  create-pull-request:
+  open-pr:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # Required for proper branch comparison
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Auto-created PR from ${{ github.ref_name }}"
-          title: "${{ github.ref_name }} → dev :: ${{ github.actor }} :: Countinuous Integration"
-          body: |
-            Automated pull request created from push to ${{ github.ref_name }}
-            
-            Branch: ${{ github.ref_name }}
-            Triggered by: ${{ github.actor }}
-          branch: ${{ github.ref_name }}
-          base: dev
-          labels: |
-            automated-pr
-            feature
+      - name: Check if PR already exists
+        id: check_pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="${GITHUB_REF_NAME}"
+
+          EXISTING_PR=$(gh pr list \
+            --base dev \
+            --head "$BRANCH" \
+            --state open \
+            --json number \
+            --jq 'length')
+
+          echo "existing_pr=$EXISTING_PR" >> $GITHUB_OUTPUT
+
+      - name: Create PR if diff exists and PR not found
+        if: steps.check_pr.outputs.existing_pr == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="${GITHUB_REF_NAME}"
+
+          gh pr create \
+            --base dev \
+            --head "$BRANCH" \
+            --title "$BRANCH → dev - Continuous Integration" \
+            --body "Automated PR created from push to \`$BRANCH\`" \
+            --label "feature"
