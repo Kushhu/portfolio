@@ -10,7 +10,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  create-pr:
+  pr-dev-release:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,8 +22,23 @@ jobs:
       - name: Fetch branches
         run: git fetch origin dev release
 
+      - name: Check if PR already exists
+        id: check_pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          EXISTING_PR=$(gh pr list \
+            --base release \
+            --head dev \
+            --state open \
+            --json number \
+            --jq 'length')
+
+          echo "existing_pr=$EXISTING_PR" >> $GITHUB_OUTPUT
+
       - name: Check if dev is ahead of release
         id: diff
+        if: steps.check_pr.outputs.existing_pr == '0'
         run: |
           COUNT=$(git rev-list --count origin/release..origin/dev)
           echo "count=$COUNT" >> $GITHUB_OUTPUT
@@ -34,8 +49,8 @@ jobs:
           gh pr create \
             --base release \
             --head dev \
-            --title "dev → release - countinuous deployment pipe" \
+            --title "dev → release - Countinuous Deployment" \
             --body "Automatically created pull request from dev to release."
-            --label deploy
+            --label deployment
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

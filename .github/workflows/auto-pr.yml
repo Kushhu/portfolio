@@ -44,5 +44,6 @@ jobs:
           gh pr create \
             --base dev \
             --head "$BRANCH" \
-            --title "$BRANCH → dev :: Continuous Integration" \
+            --title "$BRANCH → dev - Continuous Integration" \
             --body "Automated PR created from push to \`$BRANCH\`" \
+            --label "feature"
