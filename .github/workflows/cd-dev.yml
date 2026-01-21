@@ -50,6 +50,7 @@ jobs:
             --base release \
             --head dev \
             --title "dev → release - auto pr - ci" \
-            --body "Automatically created pull request from dev to release."
+            --body "Automatically created pull request from dev to release." \ 
+            --label "deployment"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
