@@ -1,4 +1,4 @@
-name: Continuous Pull To Development
+name: auto pr - ci - feature / task → dev 
 
 on:
   push:
