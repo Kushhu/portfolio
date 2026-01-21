@@ -1,0 +1,41 @@
+name: Continuous Pull Request To Release
+
+on:
+  push:
+    branches:
+      - dev
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch branches
+        run: git fetch origin dev release
+
+      - name: Check if dev is ahead of release
+        id: diff
+        run: |
+          COUNT=$(git rev-list --count origin/release..origin/dev)
+          echo "count=$COUNT" >> $GITHUB_OUTPUT
+
+      - name: Create Pull Request dev → release
+        if: steps.diff.outputs.count != '0'
+        run: |
+          gh pr create \
+            --base release \
+            --head dev \
+            --title "dev → release - countinuous deployment pipe" \
+            --body "Automatically created pull request from dev to release."
+            --label deploy
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

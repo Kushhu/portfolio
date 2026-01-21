@@ -1,9 +1,9 @@
-name: Build and Deploy Angular 21
+name: Build and Deploy Angular
 
 on:
   push:
     branches:
-      - latest
+      - release
   workflow_dispatch:
 
 permissions:
