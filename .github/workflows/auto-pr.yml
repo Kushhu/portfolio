@@ -6,7 +6,7 @@ on:
       - dev
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
 
 jobs:
@@ -16,21 +16,25 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: dev
+          branch: auto/dev-to-latest
           base: latest
           title: "Auto PR: dev → latest"
           body: |
-            🔄 This pull request was automatically created.
+            🔄 This PR was automatically created.
 
             **Source:** dev  
-            **Target:** latest  
+            **Target:** latest
 
             Please review and merge.
           labels: |
             auto-pr
             dev-to-latest
+          delete-branch: true
