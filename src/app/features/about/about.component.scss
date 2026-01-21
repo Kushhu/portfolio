@@ -1,0 +1,156 @@
+.about-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 4rem;
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--bright-blue), var(--electric-violet));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+  }
+}
+
+section {
+  margin-bottom: 6rem;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: var(--bright-blue);
+  }
+}
+
+.about-intro {
+  background: var(--card-background, rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+  padding: 3rem;
+  border-radius: 8px;
+
+  .intro-content {
+    h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-secondary, rgba(255, 255, 255, 0.8));
+      margin-bottom: 1rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.experience {
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--bright-blue), transparent);
+    }
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-marker {
+      position: absolute;
+      left: -10px;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background: var(--bright-blue);
+      border: 3px solid var(--background, #000);
+      border-radius: 50%;
+    }
+
+    .timeline-content {
+      h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .company {
+        color: var(--text-secondary, rgba(255, 255, 255, 0.6));
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+
+      .description {
+        color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+.education {
+  .education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .education-card {
+    background: var(--card-background, rgba(255, 255, 255, 0.05));
+    border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+    padding: 2rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: var(--bright-blue);
+      transform: translateY(-4px);
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .field {
+      color: var(--bright-blue);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .institution {
+      color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+      margin-bottom: 0.5rem;
+    }
+
+    .year {
+      color: var(--text-secondary, rgba(255, 255, 255, 0.5));
+      font-size: 0.9rem;
+    }
+  }
+}

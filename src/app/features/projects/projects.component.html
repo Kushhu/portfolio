@@ -1,0 +1,20 @@
+<div class="projects-page">
+  <div class="page-header">
+    <h1>My Projects</h1>
+    <p>A collection of projects I've built showcasing my skills and expertise</p>
+  </div>
+
+  <div class="filters">
+    <button *ngFor="let filter of filters" [class.active]="selectedFilter === filter" (click)="filterProjects(filter)">
+      {{ filter }}
+    </button>
+  </div>
+
+  <div class="projects-grid">
+    <app-project-card
+      *ngFor="let project of getFilteredProjects((projects$ | async) || [])"
+      [project]="project"
+    >
+    </app-project-card>
+  </div>
+</div>
