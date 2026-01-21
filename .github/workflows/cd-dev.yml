@@ -51,6 +51,5 @@ jobs:
             --head dev \
             --title "dev → release - Countinuous Deployment" \
             --body "Automatically created pull request from dev to release."
-            --label "feature"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
