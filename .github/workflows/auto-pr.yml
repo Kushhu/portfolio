@@ -46,4 +46,4 @@ jobs:
             --head "$BRANCH" \
             --title "$BRANCH → dev :: Continuous Integration" \
             --body "Automated PR created from push to \`$BRANCH\`" \
-            --label "automated-pr, feature"
+            --label "feature"
