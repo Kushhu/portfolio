@@ -1,0 +1,31 @@
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Kushagra</h3>
+      <p>Full-stack developer building innovative web solutions.</p>
+    </div>
+
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#ideas">Ideas</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>Follow</h4>
+      <div class="social-links">
+        <a *ngFor="let link of socialLinks" [href]="link.url" [title]="link.name" target="_blank" rel="noopener noreferrer">
+          {{ link.name }}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {{ currentYear }} Kushagra. All rights reserved.</p>
+  </div>
+</footer>

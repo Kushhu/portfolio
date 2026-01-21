@@ -1,0 +1,66 @@
+<div class="hero">
+  <div class="hero-content">
+    <h1>Hi, I'm Kushagra</h1>
+    <p class="subtitle">Full-Stack Developer | Tech Innovator | Problem Solver</p>
+    <p class="description">
+      I craft elegant solutions to complex problems using modern web technologies. Passionate about building scalable applications and sharing knowledge with the community.
+    </p>
+
+    <div class="cta-buttons">
+      <a routerLink="/projects" class="btn btn-primary">
+        View My Projects
+      </a>
+      <a routerLink="/contact" class="btn btn-secondary">
+        Get In Touch
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="gradient-orb"></div>
+  </div>
+</div>
+
+<section class="stats">
+  <div class="stats-container">
+    <div *ngFor="let stat of stats" class="stat-card">
+      <div class="stat-value">{{ stat.value }}</div>
+      <div class="stat-label">{{ stat.label }}</div>
+    </div>
+  </div>
+</section>
+
+<section class="skills">
+  <div class="container">
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3>Frontend</h3>
+        <ul>
+          <li>Angular 21+</li>
+          <li>TypeScript</li>
+          <li>SCSS/CSS</li>
+          <li>RxJS</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h3>Backend</h3>
+        <ul>
+          <li>Node.js</li>
+          <li>Express</li>
+          <li>PostgreSQL</li>
+          <li>MongoDB</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h3>Tools & DevOps</h3>
+        <ul>
+          <li>Docker</li>
+          <li>Git</li>
+          <li>AWS</li>
+          <li>CI/CD</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

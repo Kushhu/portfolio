@@ -1,0 +1,28 @@
+<div class="ideas-page">
+  <div class="page-header">
+    <h1>Ideas & Innovations</h1>
+    <p>Upcoming projects and innovative ideas I'm exploring</p>
+  </div>
+
+  <div class="filters">
+    <button *ngFor="let category of categories" [class.active]="selectedCategory === category" (click)="filterIdeas(category)">
+      {{ category }}
+    </button>
+  </div>
+
+  <div class="ideas-container">
+    <div *ngFor="let idea of getFilteredIdeas((ideas$ | async) || [])" class="idea-card">
+      <div class="idea-header">
+        <h3>{{ idea.title }}</h3>
+        <span class="category">{{ idea.category }}</span>
+      </div>
+      <p class="idea-description">{{ idea.description }}</p>
+      <div class="idea-meta">
+        <span class="date">{{ idea.date | date: 'MMM d, y' }}</span>
+        <div class="tags">
+          <span *ngFor="let tag of idea.tags" class="tag">{{ tag }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

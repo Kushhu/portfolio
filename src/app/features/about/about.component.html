@@ -1,0 +1,47 @@
+<div class="about-page">
+  <div class="page-header">
+    <h1>About Me</h1>
+    <p>My journey as a developer and innovator</p>
+  </div>
+
+  <section class="about-intro">
+    <div class="intro-content">
+      <h2>Who I Am</h2>
+      <p>
+        I'm a passionate full-stack developer with 5+ years of experience building modern web applications. I love solving complex problems, learning new technologies, and contributing to the open-source community.
+      </p>
+      <p>
+        My expertise spans frontend development with Angular, backend systems with Node.js, and cloud infrastructure on AWS. I'm committed to writing clean, maintainable code and following software engineering best practices.
+      </p>
+      <p>
+        When I'm not coding, you can find me exploring new technologies, writing technical blog posts, or contributing to open-source projects.
+      </p>
+    </div>
+  </section>
+
+  <section class="experience">
+    <h2>Experience</h2>
+    <div class="timeline">
+      <div *ngFor="let exp of experience" class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>{{ exp.role }}</h3>
+          <p class="company">{{ exp.company }} — {{ exp.period }}</p>
+          <p class="description">{{ exp.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="education">
+    <h2>Education</h2>
+    <div class="education-grid">
+      <div *ngFor="let edu of education" class="education-card">
+        <h3>{{ edu.degree }}</h3>
+        <p class="field">{{ edu.field }}</p>
+        <p class="institution">{{ edu.institution }}</p>
+        <p class="year">{{ edu.year }}</p>
+      </div>
+    </div>
+  </section>
+</div>
