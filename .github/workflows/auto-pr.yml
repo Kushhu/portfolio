@@ -47,3 +47,11 @@ jobs:
             --title "$BRANCH → dev - Continuous Integration" \
             --body "Automated PR created from push to \`$BRANCH\`" \
             --label "feature"
+
+      - name: Enable auto-merge
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr merge ${GITHUB_REF_NAME} \
+            --auto \
+            --squash
