@@ -5,22 +5,31 @@ on:
     branches:
       - dev
 
+  pull_request:
+    branches:
+      - dev
+    types:
+      - closed
+
 permissions:
   contents: write
   pull-requests: write
 
 jobs:
   create-pull-request:
+    if: |
+      github.event_name == 'push' ||
+      github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: Create Pull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -28,13 +37,15 @@ jobs:
           base: latest
           title: "Auto PR: dev → latest"
           body: |
-            🔄 This PR was automatically created.
-
-            **Source:** dev  
-            **Target:** latest
-
-            Please review and merge.
-          labels: |
-            auto-pr
-            dev-to-latest
+            🔄 Auto-generated PR  
+            **dev → latest**
           delete-branch: true
+
+      - name: Enable auto-merge
+        if: steps.cpr.outputs.pull-request-number != ''
+        run: |
+          gh pr merge ${{ steps.cpr.outputs.pull-request-number }} \
+            --auto \
+            --squash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
