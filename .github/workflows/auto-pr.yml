@@ -21,17 +21,16 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          branch: dev
           base: latest
-          head: dev
           title: "Auto PR: dev → latest"
           body: |
             🔄 This pull request was automatically created.
-            
+
             **Source:** dev  
             **Target:** latest  
 
-            Please review and merge if everything looks good.
+            Please review and merge.
           labels: |
             auto-pr
             dev-to-latest
-          draft: false
