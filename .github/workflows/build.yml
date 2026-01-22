@@ -1,9 +1,6 @@
 name: angular build
 
-on:
-  push:
-    branches-ignore:
-      - release
+on: pull_request
 
 jobs:
   build:
