@@ -1,0 +1,66 @@
+name: auto pr - ci - dev → release
+
+on:
+  push:
+    branches:
+      - dev
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  pr-dev-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch branches
+        run: git fetch origin dev release
+
+      - name: Check if PR already exists
+        id: check_pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          EXISTING_PR=$(gh pr list \
+            --base release \
+            --head dev \
+            --state open \
+            --json number \
+            --jq 'length')
+
+          echo "existing_pr=$EXISTING_PR" >> $GITHUB_OUTPUT
+
+      - name: Check if dev is ahead of release
+        id: diff
+        if: steps.check_pr.outputs.existing_pr == '0'
+        run: |
+          COUNT=$(git rev-list --count origin/release..origin/dev)
+          echo "count=$COUNT" >> $GITHUB_OUTPUT
+
+      - name: Create Pull Request
+        id: create_pr
+        if: steps.diff.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --base release \
+            --head dev \
+            --title "dev → release - auto pr - ci" \
+            --body "Automatically created pull request from dev to release." \
+            --label "deployment"
+
+      - name: Enable auto-merge
+        if: steps.diff.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr merge dev \
+            --auto \
+            --squash
