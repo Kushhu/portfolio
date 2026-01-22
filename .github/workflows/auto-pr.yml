@@ -7,7 +7,7 @@ on:
       - 'bugfix/**'
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
 
 jobs:
@@ -53,13 +53,13 @@ jobs:
 
           echo "pr_url=$PR_URL" >> $GITHUB_OUTPUT
 
-      - name: Enable auto-merge
-        if: steps.pr.outputs.pr_url != '' || steps.create.outputs.pr_url != ''
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          PR_URL="${{ steps.pr.outputs.pr_url || steps.create.outputs.pr_url }}"
+      # - name: Enable auto-merge
+      #   if: steps.pr.outputs.pr_url != '' || steps.create.outputs.pr_url != ''
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: |
+      #     PR_URL="${{ steps.pr.outputs.pr_url || steps.create.outputs.pr_url }}"
 
-          gh pr merge "$PR_URL" \
-            --admin \
-            --squash
+      #     gh pr merge "$PR_URL" \
+      #       --auto \
+      #       --squash
