@@ -54,5 +54,12 @@ jobs:
           echo "pr_url=$PR_URL" >> $GITHUB_OUTPUT
 
       - name: Enable auto-merge
-        run: 
-          echo "$PR_URL"
+        if: steps.pr.outputs.pr_url != '' || steps.create.outputs.pr_url != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_URL="${{ steps.pr.outputs.pr_url || steps.create.outputs.pr_url }}"
+
+          gh pr merge "$PR_URL" \
+            --auto \
+            --squash
