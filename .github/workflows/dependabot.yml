@@ -1,11 +1,9 @@
-name: Dependabot Smoke Test
+name: Smoke Test
 
-on:
-  pull_request_target:
-    types: [opened]
+on: pull_request
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Dependabot workflow triggered"
+      - run: echo "New PR Open"
