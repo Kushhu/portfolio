@@ -81,18 +81,3 @@ jobs:
         run: |
           npm run build -- --configuration production \
           --base-href /${{ github.event.repository.name }}/
-
-      # 👇 Adjust this path if you are NOT using SSR
-      - name: Add .nojekyll
-        run: touch ./dist/portfolio/browser/.nojekyll
-
-      - name: Copy index.html to 404.html
-        run: cp ./dist/portfolio/browser/index.html ./dist/portfolio/browser/404.html
-
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist/portfolio/browser

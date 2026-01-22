@@ -1,0 +1,10 @@
+name: angular build 
+
+on: push
+
+jobs:
+  build:
+    uses: ./.github/workflows/build-reusable.yml
+    with:
+      base-href: /${{ github.event.repository.name }}/
+
