@@ -59,7 +59,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           PR_URL="${{ steps.pr.outputs.pr_url || steps.create.outputs.pr_url }}"
-
+          gh pr review --approve "$PR_URL"
+          
           gh pr merge "$PR_URL" \
             --auto \
             --squash
