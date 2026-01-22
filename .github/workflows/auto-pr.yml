@@ -47,19 +47,17 @@ jobs:
             --head "$BRANCH" \
             --title "$BRANCH → dev - Continuous Integration" \
             --body "Automated PR created from push to \`$BRANCH\`" \
-            --label "feature" \
-            --json url \
-            --jq .url)
+            --label "feature")
 
           echo "pr_url=$PR_URL" >> $GITHUB_OUTPUT
 
-      # - name: Enable auto-merge
-      #   if: steps.pr.outputs.pr_url != '' || steps.create.outputs.pr_url != ''
-      #   env:
-      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   run: |
-      #     PR_URL="${{ steps.pr.outputs.pr_url || steps.create.outputs.pr_url }}"
+      - name: Enable auto-merge
+        if: steps.pr.outputs.pr_url != '' || steps.create.outputs.pr_url != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_URL="${{ steps.pr.outputs.pr_url || steps.create.outputs.pr_url }}"
 
-      #     gh pr merge "$PR_URL" \
-      #       --auto \
-      #       --squash
+          gh pr merge "$PR_URL" \
+            --auto \
+            --squash
