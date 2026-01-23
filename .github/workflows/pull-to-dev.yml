@@ -34,11 +34,14 @@ jobs:
 
           echo "pr_url=$PR_URL" >> $GITHUB_OUTPUT
 
+      - name: Fetch branches
+        run: git fetch origin dev ${GITHUB_REF_NAME}
+
       - name: Check if branch is ahead of dev
         id: diff
         if: steps.pr.outputs.pr_url == ''
         run: |
-          COUNT=$(git rev-list --count dev..${GITHUB_REF_NAME})
+          COUNT=$(git rev-list --count origin/dev..origin/${GITHUB_REF_NAME})
           echo "count=$COUNT" >> $GITHUB_OUTPUT
 
       - name: Create PR if not exists
