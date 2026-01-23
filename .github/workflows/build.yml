@@ -1,14 +1,12 @@
 name: angular build
 
 on:
-  workflow_run:
-    workflows: ['auto pr - ci - dev → release', 'ci - task → dev']
-    types:
-      - completed
+  push:
+    branches-ignore:
+      - release
 
 jobs:
   build:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
