@@ -2,7 +2,7 @@ name: angular build
 
 on:
   workflow_run:
-    workflows: ['auto pr - ci - dev → release']
+    workflows: ['auto pr - ci - dev → release', 'ci - task → dev']
     types:
       - completed
 
