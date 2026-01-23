@@ -25,3 +25,10 @@ jobs:
       - name: Build Angular app
         run: |
           npm run build -- --configuration production
+
+  test:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: Test Angular app
+        run: npm run test
