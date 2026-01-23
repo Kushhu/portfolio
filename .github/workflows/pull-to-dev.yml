@@ -66,6 +66,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr merge ${GITHUB_REF_NAME} \
-            --auto \
-            --squash
+          gh pr merge ${GITHUB_REF_NAME} --auto 
