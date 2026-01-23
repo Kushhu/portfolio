@@ -52,7 +52,7 @@ jobs:
           gh pr create \
             --base release \
             --head dev \
-            --title "CI | dev → release" \
+            --title "dev → release - Continuous Integration" \
             --body "Automatically created pull request from dev to release." \
             --label "deployment"
 
