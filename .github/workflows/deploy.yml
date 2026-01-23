@@ -1,4 +1,4 @@
-name: Build and Deploy Angular
+name: cd - build and deploy
 
 on:
   push:
