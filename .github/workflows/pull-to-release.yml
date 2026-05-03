@@ -61,6 +61,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
-          gh pr merge dev \
-            --auto \
-            --merge
+          gh pr merge ${GITHUB_REF_NAME} --auto --merge
