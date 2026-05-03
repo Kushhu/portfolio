@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+  font-family: 'Pompiere', sans-serif;
+}
+html {
+  background-color: black;
+  height: 100dvh;
+}
+body {
+  margin: 0;
+}
+
+:root {
+  --primary-font: rgb(32, 33, 36);
+  --secondory-font: rgb(60, 64, 67);
+}
