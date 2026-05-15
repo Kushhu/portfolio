@@ -3,14 +3,14 @@
     position: relative;
     padding: 1rem 4rem;
     // border: 1px solid rgb(218, 220, 224);
-    border: 2px dashed rgba(255, 255, 255, 0.25);
     // border-radius: 0.25rem;
+    border: 2px dashed rgba(255, 255, 255, 0.25);
     margin: 2rem 4rem;
     width: fit-content;
     background-color: #131313;
 
     h1 {
-      transition: opacity 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+      transition: left 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
       opacity: 0.8;
       color: white;
       margin: 0;
@@ -18,9 +18,11 @@
 
     img {
       position: absolute;
-      left: 105%;
-      transition: left 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+      right: 0%;
+      height: 100%;
+      transition: right 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
       top: 0;
+      z-index: -1;
     }
 
     &:hover h1 {
@@ -29,7 +31,7 @@
     }
 
     &:hover img {
-      left: 85%;
+      right: -25%;
     }
   }
 
@@ -38,19 +40,102 @@
 
     img {
       position: absolute;
+      opacity: 0.6;
       animation: float 6s ease-in-out infinite;
     }
 
     .top-right {
       top: 3rem;
       right: 4rem;
-      animation-delay: 700ms;
+      animation-delay: 1700ms;
       animation-direction: reverse;
+      height: 15rem;
     }
 
     .bottom-left {
-      bottom: 10rem;
+      bottom: 4rem;
       left: 4rem;
+      height: 20rem;
+    }
+  }
+
+  main {
+    width: 80vw;
+    // height: 20vh;
+    margin: auto;
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: 1fr 2.5fr;
+    align-items: center;
+
+    nav {
+      justify-self: end;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      li {
+        list-style: none;
+        text-transform: uppercase;
+        text-align: end;
+        padding: 0.5rem 0;
+
+        color: rgba(255, 255, 255, 0.4);
+
+        cursor: pointer;
+        font-size: 3.5rem;
+
+        &:hover {
+          color: rgba(255, 255, 255, 1);
+        }
+      }
+    }
+
+    .greetings {
+      * {
+        font-family: 'Poppins', sans-serif;
+      }
+
+      .divider {
+        width: 20rem;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.1);
+        margin-bottom: 3rem;
+        margin-top: 2rem;
+      }
+
+      h1 {
+        margin: 0;
+        line-height: 6.5rem;
+        font-size: 6rem;
+        opacity: 0.9;
+        letter-spacing: 2%;
+
+        .outlined {
+          -webkit-text-stroke: 1px #bf305b;
+          color: transparent;
+        }
+      }
+
+      p {
+        font-size: 1.65rem;
+        color: rgba(255, 255, 255, 0.8);
+        letter-spacing: 2%;
+
+        b {
+          transition: all 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+
+        b:hover {
+          color: #bf305bd0;
+          cursor: auto;
+        }
+
+        .handwritten {
+          font-family: monospace;
+          color: rgb(0, 156, 0);
+        }
+      }
     }
   }
 
@@ -75,6 +160,7 @@
 
       &.email:hover {
         opacity: 1;
+        text-decoration: underline;
       }
     }
   }
@@ -85,7 +171,7 @@
     transform: translatey(0px);
   }
   50% {
-    transform: translatey(-20px);
+    transform: translatey(-1rem);
   }
   100% {
     transform: translatey(0px);
