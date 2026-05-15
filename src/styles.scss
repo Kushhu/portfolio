@@ -11,6 +11,10 @@ body {
 }
 
 :root {
+  font-size: clamp(14px, 0.5vw + 0.1rem, 18px);
+
+  color: rgba(255, 255, 255, 1);
+
   --primary-font: rgb(32, 33, 36);
   --secondory-font: rgb(60, 64, 67);
 }
