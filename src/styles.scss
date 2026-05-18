@@ -1,6 +1,10 @@
 * {
   box-sizing: border-box;
   font-family: 'Pompiere', sans-serif;
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+  display: none;
 }
 html {
   background-color: black;
@@ -17,4 +21,16 @@ body {
 
   --primary-font: rgb(32, 33, 36);
   --secondory-font: rgb(60, 64, 67);
+}
+
+input {
+  accent-color: #bf305b;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+
+  &:focus{
+    border-color: rgba(255, 255, 255, 0.5);
+  }
 }
