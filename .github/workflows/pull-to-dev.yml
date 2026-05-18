@@ -61,9 +61,9 @@ jobs:
 
           echo "pr_url=$PR_URL" >> $GITHUB_OUTPUT
 
-      - name: Enable auto-merge
-        if: steps.diff.outputs.count != '0'
-        env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN  }}
-        run: |
-          gh pr merge ${GITHUB_REF_NAME} --auto --merge
+      # - name: Enable auto-merge
+      #   if: steps.diff.outputs.count != '0'
+      #   env:
+      #     GH_TOKEN: ${{ secrets.PAT_TOKEN  }}
+      #   run: |
+      #     gh pr merge ${GITHUB_REF_NAME} --auto --merge
