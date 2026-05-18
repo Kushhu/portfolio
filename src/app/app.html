@@ -1,6 +1,28 @@
+<div #curtain class="black-out"></div>
 <div class="app-container">
-    <header>
-        <h1> Kushagra Gangwal</h1>
+    <header #header class="user-greet">
+        @switch (introductionSteps()) {
+        @case (0) {
+        <h1 class="typewriter" [style.--ch]="36">Ohh... So You've Landend In My Space @if (name()) { AGAIN.. }</h1>
+        }
+        @case (1) {
+        <h1 class="typewriter" [style.--ch]="50">Tell me your name and pretend this is professional</h1>
+        }
+        @case (2) {
+        <h1 class="typewriter" [style.--ch]="26">Authentication Required...</h1>
+        <input type="text" maxlength="12" #inputRef class="slidup" (input.enter)="afterFillingName(inputRef.value)" (blur)="afterFillingName(inputRef.value)"
+            placeholder="Enter name before CSS breaks">
+        }
+        @case (3) {
+        <h1>Your identity is loading...</h1>
+        }
+        @case (4) {
+        <h1 class="typewriter" [style.--ch]="45">This interaction was definitely unnecessary 💅</h1>
+        }
+        @case (5) {
+        <h1 class="typewriter" [style.--ch]="16" #name>Kushagra Gangwal</h1>
+        }
+        }
         <img src="gojo.svg" alt="">
     </header>
     <div class="dot-img">
@@ -16,19 +38,53 @@
         </nav>
 
         <div class="greetings">
-            <h1> <span class="outlined">Good Evening,</span> <br> Atulkumar </h1>
+            <h1> <span class="outlined">
+                    @if(now.getHours() > 0 && now.getHours() < 5){ To Early Morning,}
+                    @if(now.getHours() > 5 && now.getHours() < 12){ Good Morning,}
+                    @if(now.getHours() > 12 && now.getHours() < 16){ Good Evening,}
+                    @if(now.getHours() > 16 && now.getHours() < 24){ Good Night,}
+                </span> <br> {{name()}} </h1>
             <div class="divider"></div>
-            <p>I'm <b> Software Engineer, </b> with over <b> 2 Years of Experience </b> & now, understanding and
-                <b> inferring knowledge </b> together with <b class="handwritten">creativity</b>
+            <p>I'm <b> Software Engineer, </b> with over <b> 2 Years</b> of Experience & now, understanding and
+                <b> inferring knowledge </b>together with <b class="handwritten">creativity</b>
             </p>
             <div class="experties-container">
                 <img src="experties.svg" alt="">
             </div>
         </div>
+
     </main>
 
-    <footer>
+    @defer(when introductionSteps()==5){
+    <div class="stages-container">
+        <h1>Software Skills I Aspire</h1>
+        <div class="skills">
+            <article style="--d:2000ms">
+                <div class="title">The Architectural Dilemma</div>
+                <p>Understanding how to design scalable, reliable, and maintainable systems. This includes
+                    microservices, caching strategies, load balancing, and
+                    database architecture.</p>
+            </article>
+            <article style="--d:2300ms">
+                <div class="title">The Time is Ticking</div>
+                <p>Successful project delivery depends on proactive planning, time management, and staying ahead of
+                    challenges with a professional approach.</p>
+            </article>
+            <article style="--d:2600ms">
+                <div class="title">The Risk of Fast Pace</div>
+                <p>A wrong step at the beginning can create major consequences later.
+                    Without proper planning and patience, small issues can quickly become bigger problems.</p>
+            </article>
+        </div>
+    </div>
+    }
+    @placeholder { <p></p> }
+
+
+    <footer (click)="copyEmail()">
         <span class="prefix">Get In Touch </span>
-        <span class="email">kushagra.work@gmail.com</span>
+        <span class="email">kushagragangwal+work@gmail.com</span>
     </footer>
 </div>
+
+<!-- , Comfronting every little detail can leverage business relationship -->
