@@ -39,10 +39,10 @@
 
         <div class="greetings">
             <h1> <span class="outlined">
-                    @if(now.getHours() > 0 && now.getHours() < 5){ To Early Morning,}
-                    @if(now.getHours() > 5 && now.getHours() < 12){ Good Morning,}
-                    @if(now.getHours() > 12 && now.getHours() < 16){ Good Evening,}
-                    @if(now.getHours() > 16 && now.getHours() < 24){ Good Night,}
+                    @if(now.getHours() >= 0 && now.getHours() < 5){ To Early Morning,}
+                    @if(now.getHours() >= 5 && now.getHours() < 12){ Good Morning,}
+                    @if(now.getHours() >= 12 && now.getHours() < 16){ Good Afternoon,}
+                    @if(now.getHours() >= 16 && now.getHours() < 24){ Good Evening,}
                 </span> <br> {{name()}} </h1>
             <div class="divider"></div>
             <p>I'm <b> Software Engineer, </b> with over <b> 2 Years</b> of Experience & now, understanding and
