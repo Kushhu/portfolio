@@ -1,0 +1,44 @@
+<main>
+    <nav>
+        <li routerLink="projects">Projects</li>
+        <li>Achivements</li>
+        <li>Perception</li>
+    </nav>
+
+    <div class="greetings" >
+        <h1 animate.leave="go"> <span class="outlined">
+                @if(now.getHours() >= 0 && now.getHours() < 5){ To Early Morning,} @if(now.getHours()>= 5 &&
+                    now.getHours() < 12){ Good Morning,} @if(now.getHours()>= 12 && now.getHours() < 16){ Good
+                            Afternoon,} @if(now.getHours()>= 16 && now.getHours() < 24){ Good Evening,} </span> <br>
+                                <span> {{name()}} </span> </h1>
+        <div class="divider"></div>
+        <p>I'm <b> Software Engineer, </b> with over <b> 2 Years</b> of Experience & now, understanding and
+            <b> inferring knowledge </b>together with <b class="handwritten">creativity</b>
+        </p>
+        <div class="experties-container">
+            <img src="experties.svg" alt="">
+        </div>
+    </div>
+
+</main>
+<div class="stages-container">
+    <h1>Software Skills I Aspire &nbsp;↯</h1>
+    <div class="skills">
+        <article style="--d:2000ms">
+            <div class="title">The Architectural Dilemma</div>
+            <p>Understanding how to design scalable, reliable, and maintainable systems. This includes
+                microservices, caching strategies, load balancing, and
+                database architecture.</p>
+        </article>
+        <article style="--d:2500ms">
+            <div class="title">The Time is Ticking</div>
+            <p>Successful project delivery depends on proactive planning, time management, and staying ahead of
+                challenges with a professional approach.</p>
+        </article>
+        <article style="--d:3000ms">
+            <div class="title">The Risk of Fast Pace</div>
+            <p>A wrong step at the beginning can create major consequences later.
+                Without proper planning and patience, small issues can quickly become bigger problems.</p>
+        </article>
+    </div>
+</div>

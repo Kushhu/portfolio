@@ -1,7 +1,6 @@
 * {
   box-sizing: border-box;
   font-family: 'Pompiere', sans-serif;
-  scroll-behavior: smooth;
 }
 ::-webkit-scrollbar {
   display: none;
@@ -9,6 +8,7 @@
 html {
   background-color: black;
   height: 100dvh;
+  scroll-behavior: smooth;
 }
 body {
   margin: 0;
@@ -30,7 +30,7 @@ input {
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
 
-  &:focus{
+  &:focus {
     border-color: rgba(255, 255, 255, 0.5);
   }
 }

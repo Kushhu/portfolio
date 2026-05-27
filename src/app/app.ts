@@ -1,8 +1,9 @@
-import { Component, ElementRef, OnInit, Signal, signal, viewChild } from '@angular/core';
+import { Component, ElementRef, Signal, signal, viewChild } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
