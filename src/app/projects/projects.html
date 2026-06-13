@@ -1,0 +1,101 @@
+<div class="container">
+    <div class="project-titles">
+        <nav>
+            <li [class.active]="activeFragment() == 'PJ0'" (click)="show('PJ0')">People Management API</li>
+            <li [class.active]="activeFragment() == 'PJ1'" (click)="show('PJ1')">BitBlocks ⫻ UX Library</li>
+            <li [class.active]="activeFragment() == 'PJ2'" (click)="show('PJ2')">Patterns In City Issues</li>
+            <li [class.active]="activeFragment() == 'PJ3'" (click)="show('PJ3')">Building Blocks For Coding</li>
+            <li [class.active]="activeFragment() == 'PJ4'" (click)="show('PJ4')">Whatsapp Simulator</li>
+        </nav>
+    </div>
+    <div class="project-panel">
+        <section style="display: grid; place-items: center;">
+            <img src="WUUT.gif" alt="">
+        </section>
+        <section id="PJ0" [class.active]="activeFragment() == 'PJ0'">
+            <h3>Enterprise Authentication & Role-Based Access Control Infrastrucure Platform</h3>
+            <code><b>Tech Stack:</b> .NET Core, Entity Framework Core, SQL Server, JWT, LINQ Query</code>
+            <p>Architected a scalable user management and authorization platform capable of supporting large-scale
+                enterprise applications. Designed a flexible Role-Based Access Control <code class="highlight">RBAC</code> model with hierarchical
+                roles, granular permissions, resource-level access management, and audit logging.
+                <br><br> Developed secure REST APIs using .NET Core and Entity Framework
+                Core while applying clean
+                architecture principles, <code class="highlight">JWT</code> authentication, validation pipelines, and
+                performance optimization
+                techniques. <br> Built the foundation for secure multi-application identity and access management.
+            </p>
+            <img src="RBAC System.svg" alt="">
+        </section>
+        <section id="PJ1" [class.active]="activeFragment() == 'PJ1'">
+            <h3>Enterprise Angular Component Library & Design System
+            </h3> <a href="https://kushhu.github.io/BitBlocks/"> kushhu.github.io/BitBlocks/</a>
+            &nbsp;&nbsp; ⁕ &nbsp;&nbsp;
+            <code>Angular, TypeScript, RxJS, SCSS, Storybook, NPM</code>
+            <p>Designed and maintained a reusable Angular component library used to standardize user experiences across
+                multiple enterprise applications. Built configurable UI components,
+                <code class="highlight">form-controls</code> &nbsp; 
+                <code class="highlight">buttons</code> &nbsp;
+                <code class="highlight">tables</code> and workflow modules while enforcing accessibility, consistency, and performance standards.
+                <br><br> Established a scalable design system that reduced duplicate development effort, accelerated
+                feature delivery, and improved maintainability across teams. Implemented versioning, documentation, and
+                modular packaging strategies to support long-term adoption and extensibility.
+                <a href="https://www.npmjs.com/package/bitblocks">deployed on npm ↝</a>
+                <br>
+            </p>
+            <div style="display: flex; justify-content: space-between; align-items: end;">
+                <img src="bitblocks-forms-ui.png" alt="">
+                <img src="bitblocks-table.png" alt="">
+                <img style="height: 7rem;" src="bitblocks-btn.png" alt="">
+            </div>
+        </section>
+        <section id="PJ2" [class.active]="activeFragment() == 'PJ2'">
+            <h3>Urban Analytics & Issue Intelligence Platform</h3>
+            <code><b>Tech Stack:</b> Data Analytics, React, Visualization Libraries HighCharts, SQL</code>
+            <p>
+                Developed a data-driven analytics platform focused on identifying recurring patterns in urban
+                infrastructure and civic issues. Designed data processing workflows and visualization dashboards to
+                transform large datasets into actionable insights. <br><br> Enabled stakeholders to analyze trends,
+                issue concentrations, and potential root causes through intuitive reporting and interactive
+                visualizations.
+                The platform demonstrated how technology can support evidence-based urban planning and public service
+                improvements.
+            </p>
+            <h3 style="margin-top: 3rem;">Value We Worked On</h3>
+            <ol>
+                <li>Enabled evidence-based decision making through structured data collection, processing, and visualization workflows.</li>
+                <br>
+                <li>Focused on transforming raw civic data into actionable insights for smarter urban planning initiatives.</li>
+                <br>
+                <li>Applied analytical techniques to discover patterns, trends, and correlations across infrastructure and public-service concerns</li>
+            </ol>
+        </section>
+        <section id="PJ3" [class.active]="activeFragment() == 'PJ3'">
+            <h3>Interactive Learning Platform for Programming Concepts</h3>
+            <code><b>Tech Stack:</b> MongoDB, Express.js, React, Node.js (MERN)</code>
+            <p>
+                Built a full-stack educational platform that simplifies software development concepts through structured
+                learning modules and practical examples. Designed and implemented secure APIs, user authentication,
+                content management workflows, and progress-tracking features.
+                <br><br> 
+                Promoted hands-on learning by organizing complex programming topics into easily digestible building
+                blocks.
+            </p>
+            <div class="show" style="display: flex; gap: 2rem;">
+                <!-- <img src="bbc.svg"  alt=""> -->
+                <img style="margin-top: 0; height: 25rem; filter:invert(1);" src="bbc\Group 31.svg" alt="">
+                <img style="margin-top: 0; height: 25rem; filter:invert(1);" src="bbc\visual-info.svg" alt="">
+                <!-- <img style="margin-top: 0;" src="bbc\visual-info-1.svg" alt=""> -->
+            </div>
+        </section>
+        <section id="PJ4" [class.active]="activeFragment() == 'PJ4'">
+            <h3>Whatsapp Frontend Messaging Simulator</h3>
+            <code><b>Tech Stack:</b> Vanilla JavaScript, HTML5, CSS3</code>
+            <p>
+                Developed a browser-based messaging application inspired by WhatsApp using vanilla JavaScript, HTML, and
+                CSS. Implemented dynamic chat rendering, conversation management, responsive layouts, and interactive
+                user interface behaviors without relying on frameworks. Demonstrated strong proficiency in DOM
+                manipulation, event-driven architecture, state handling, and modern frontend development fundamentals.
+            </p>
+        </section>
+    </div>
+</div>
