@@ -1,4 +1,4 @@
-import { Component, ElementRef, Signal, signal, viewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Signal, signal, viewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,7 +7,7 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App {
+export class App implements OnInit {
   protected readonly title = signal('Portfolio');
   protected now = new Date();
   protected name = signal(localStorage.getItem('x-user-name'))
@@ -29,7 +29,7 @@ export class App {
     this.introductionSteps.set(index)
   }
 
-  constructor() {
+  ngOnInit(): void {
     if (this.name()) {
       setTimeout(() => this.nextStep(5), 3000);
       setTimeout(() => {
@@ -70,6 +70,6 @@ export class App {
   }
 
   copyEmail() {
-    navigator.clipboard.writeText('kushagragangwal+work@gmail.com')
+    navigator.clipboard.writeText('kushagra.core@gmail.com')
   }
 }
