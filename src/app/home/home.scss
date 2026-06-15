@@ -43,7 +43,7 @@ main {
     .divider {
       width: 20rem;
       height: 1px;
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: hsla(0, 0%, 100%, 0.1);
       margin-bottom: 3rem;
       margin-top: 2rem;
     }
@@ -54,6 +54,7 @@ main {
       font-size: 6rem;
       opacity: 0.9;
       letter-spacing: 2%;
+      color: var(--primary-font);
       // position: sticky;
       // top: 1rem;
       text-transform: capitalize;
@@ -70,7 +71,7 @@ main {
 
     p {
       font-size: 1.65rem;
-      color: hsl(0, 0, 70%);
+      color: hsl(0, 0%, 70%);
       letter-spacing: 2%;
 
       b {
@@ -93,24 +94,28 @@ main {
 }
 
 .stages-container {
-  color: hsl(0, 0, 60%);
+  color: hsl(0, 0%, 60%);
   font-size: 1.5rem;
   margin: auto;
   width: 68%;
   padding-bottom: 7rem;
 
   h1 {
-    color: hsl(0, 0, 20%);
+    color: hsl(0, 0%, 20%);
     opacity: 0;
     font-weight: 200;
     animation: 1s fade 1s forwards;
   }
   article:hover {
-    color: hsl(0, 0, 80%);
+    color: hsl(0, 0%, 80%);
   }
   .skills {
     display: flex;
     gap: 1rem;
+
+    &:hover article:not(:hover) {
+      filter: blur(1px);
+    }
 
     article {
       opacity: 0;
@@ -134,12 +139,11 @@ main {
       &:hover {
         background-color: #0c0c0c;
         transform: translateY(-1rem);
-        filter: none;
       }
 
       .title {
         font-size: 2rem;
-        color: hsl(0, 0, 90%);
+        color: hsl(0, 0%, 90%);
       }
 
       p {

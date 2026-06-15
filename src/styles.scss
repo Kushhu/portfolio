@@ -15,12 +15,13 @@ body {
 }
 
 :root {
-  font-size: clamp(14px, 0.5vw + 0.1rem, 18px);
+  font-size: 14px;
 
-  color: rgba(255, 255, 255, 1);
+  color: hsl(0, 0%, 100%);
 
-  --primary-font: rgb(32, 33, 36);
-  --secondory-font: rgb(60, 64, 67);
+  --primary-font: hsl(0, 0%, 80%);
+  --highlight-font: hsl(0, 0%, 95%);
+  --secondary-font: hsl(0, 0%, 50%);
 }
 
 input {
@@ -32,5 +33,40 @@ input {
 
   &:focus {
     border-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* Mobile Small */
+@media (max-width: 480px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+/* Mobile Large */
+@media (min-width: 481px) and (max-width: 768px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+/* Laptop */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1441px) {
+  :root {
+    font-size: 14px;
   }
 }
